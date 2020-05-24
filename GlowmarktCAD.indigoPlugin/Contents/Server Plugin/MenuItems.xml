@@ -1,0 +1,6 @@
+<MenuItems>
+	<MenuItem id="toggleDebug">
+		<Name>Toggle Debugging</Name>
+        <CallbackMethod>toggleDebugging</CallbackMethod>
+	</MenuItem>
+</MenuItems>

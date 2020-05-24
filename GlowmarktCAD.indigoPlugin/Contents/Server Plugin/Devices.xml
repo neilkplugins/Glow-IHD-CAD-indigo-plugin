@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<Devices>
+	<!-- Define some devices -->
+	<Device type="custom" id="GlowmarktCAD">
+		<Name>Glowmarkt Smart Meter</Name>
+		<ConfigUI>
+            <SupportURL>http://forums.indigodomo.com/viewforum.php?f=xxx</SupportURL>
+			
+            <Field id="brokerID" type="menu">
+                <Label>MQTT Broker:</Label>
+                <List class="self" filter="" method="getBrokerDevices" dynamicReload="true"/>
+            </Field>
+            <Field id="octopus_enable" type="checkbox" defaultValue="false" >
+            <Label>Use associated Octopus Agile Tariff Device</Label>
+            </Field>
+			<Field id="octopus_id" type="menu" visibleBindingId="octopus_enable" visibleBindingValue="true">
+                <Label>Agile Tariff Device:</Label>
+                <List class="self" filter="" method="getAgileDevices" dynamicReload="true"/>
+            </Field>
+        </ConfigUI>
+		<States>
+		<State id="elec_instantaneous">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+            <State id="elec_week_consumption">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Weekly Electricity Consumption</TriggerLabel>
+			<ControlPageLabel>Weekly Electricity Consumption</ControlPageLabel>
+            </State>
+            <State id="elec_month_consumption">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Monthly Electricity Consumption</TriggerLabel>
+			<ControlPageLabel>Monthly Electricity Consumption</ControlPageLabel>
+            </State>
+            <State id="elec_daily_consumption">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Daily Electricity Consumption</TriggerLabel>
+			<ControlPageLabel>Daily Electricity Consumption</ControlPageLabel>
+            </State>
+            <State id="gas_week_consumption">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Weekly Gas Consumption</TriggerLabel>
+			<ControlPageLabel>Weekly Gas Consumption</ControlPageLabel>
+            </State>
+            <State id="gas_month_consumption">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Monthly Gas Consumption</TriggerLabel>
+			<ControlPageLabel>Monthly Gas Consumption</ControlPageLabel>
+            </State>
+            <State id="gas_daily_consumption">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Daily Gas Consumption</TriggerLabel>
+			<ControlPageLabel>Daily Gas Consumption</ControlPageLabel>
+            </State>
+            <State id="gas_meter">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Gas Meter Reading</TriggerLabel>
+			<ControlPageLabel>Gas Meter Reading</ControlPageLabel>
+            </State>
+            <State id="electricity_meter">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Electricity Meter Reading</TriggerLabel>
+			<ControlPageLabel>Electricity Meter Reading</ControlPageLabel>
+            </State>
+            <State id="agile_cost_hour">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Agile Hourly Cost</TriggerLabel>
+			<ControlPageLabel>Agile Hourly Cost</ControlPageLabel>
+            </State>
+            <State id="electricity_supplier">
+			<ValueType>String</ValueType>
+			<TriggerLabel>Electricity Supplier</TriggerLabel>
+			<ControlPageLabel>Electricity Supplier</ControlPageLabel>
+            </State>
+            
+        </States>
+        <UiDisplayStateId>elec_instantaneous</UiDisplayStateId>		
+	</Device>
+</Devices>
