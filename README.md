@@ -11,4 +11,6 @@ The initial version of the plugin consumes the payload sent from the associated 
  
 The plugin appears as an energy monitoring device in Indigo that also shows the "real time" electricity consumption in Watts, which is updated every few seconds when a MQTT payload arrives.  It also shows historical consumption for gas and electricity across various periods (Day/Month/Year) that are available in the MQTT data. (and potentially more via the API in the future).  I have also integrated it with my Octopus energy plugin so that you can project an "hourly" electricity cost based on your actual current usage.  All of these stages can be graphed, trigger on high usage/cost to shape demand and many more approaches I have not considered.  It essentially allows you to control when you consume energy, to alert your family the best times to consume energy.  This has broader benefit than cost optimisation, as the times of low rates also coincide with good availability of renewable energy.
 
+Documentation is https://github.com/neilkplugins/Glow-IHD-CAD-indigo-plugin/wiki
+
 The current versions are alpha, and by using it then you will experience errors, including on the interpretation of the data (that is done by the plugin) but you will help me test and validate this.
