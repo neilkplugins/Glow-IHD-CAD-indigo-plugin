@@ -100,32 +100,52 @@ class Plugin(indigo.PluginBase):
 					gas_week_consumption = float((int(payload_json['gasMtr']['0702']['0C']['30'], 16))/1000)
 					gas_month_consumption = float((int(payload_json['gasMtr']['0702']['0C']['40'], 16))/1000)
 					gas_daily_consumption = float((int(payload_json['gasMtr']['0702']['0C']['01'], 16))/1000)
-					agile_cost= indigo.devices[84950009].states['Current_Electricity_Rate']
-					agile_cost_hour = (agile_cost * elec_instantaneous)/1000
-
-					
-					
-					device_states.append({ 'key' : 'agile_cost_hour', 'value' : agile_cost_hour, 'uiValue' : str(agile_cost_hour)+ " p" }) 
 					device_states.append({ 'key' : 'elec_month_consumption', 'value' : elec_month_consumption }) 
 					device_states.append({ 'key' : 'elec_week_consumption', 'value' : elec_week_consumption })
 					device_states.append({ 'key' : 'elec_daily_consumption', 'value' : elec_daily_consumption }) 
 					device_states.append({ 'key' : 'gas_month_consumption', 'value' : gas_month_consumption }) 
 					device_states.append({ 'key' : 'gas_week_consumption', 'value' : gas_week_consumption })
 					device_states.append({ 'key' : 'gas_daily_consumption', 'value' : gas_daily_consumption })
-				
 					device_states.append({ 'key' : 'gas_meter', 'value' : gas_meter })
 					device_states.append({ 'key' : 'electricity_meter', 'value' : electricity_meter })
 					device_states.append({ 'key' : 'electricity_supplier', 'value' : electricity_supplier })
+					device_states.append({ 'key' : 'mpan', 'value' : mpan })
 
 					device_states.append({ 'key': 'elec_instantaneous', 'value' : elec_instantaneous , 'uiValue' :str(elec_instantaneous)+" W", 'clearErrorState':True })
+					# If an agile tarriff device is configured from the Octopus Energy Plugin then calculate the actual projected cost per hour
+					if device.pluginProps['octopus_enable']:
+						agile_device = device.pluginProps['octopusID']
+						self.debugLog(agile_device)
+						agile_cost= indigo.devices[int(agile_device)].states['Current_Electricity_Rate']
+						agile_cost_hour = (agile_cost * elec_instantaneous)/1000
+						device_states.append({ 'key' : 'agile_cost_hour', 'value' : agile_cost_hour, 'uiValue' : str(agile_cost_hour)+ " p" })
 				
 					device.updateStatesOnServer(device_states)
 					device.updateStateImageOnServer(indigo.kStateImageSel.EnergyMeterOn)
 				except Exception as e:
-					self.debugLog("Oops!", e.__class__, "occurred.")
+					self.debugLog("Failed to complete updates for Glow device "+device.name)
+					self.debugLog(e)
 
         return
 
+ ########################################
+    # UI Validate, Device Config
+    ########################################
+    def validateDeviceConfigUi(self, valuesDict, typeId, device):
+		self.debugLog(valuesDict)
+		if valuesDict['brokerID']=="":
+			self.errorLog("MQTT Broker Device cannot be empty")
+			errorsDict = indigo.Dict()
+			errorsDict['brokerID'] = "Broker Device Cannot Be Empty"
+			return (False, valuesDict, errorsDict)
+		if valuesDict['octopus_enable']:
+			if valuesDict['octopusID']=="":
+				self.errorLog("Octopus Tarriff Device cannot be empty")
+				errorsDict = indigo.Dict()
+				errorsDict['octopusID'] = "Octopus Tarriff Device Cannot Be Empty"
+				return (False, valuesDict, errorsDict)
+		return (True, valuesDict)
+		
     ########################################
     # UI Validate, Plugin Preferences
     ########################################

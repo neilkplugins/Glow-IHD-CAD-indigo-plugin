@@ -13,7 +13,7 @@
             <Field id="octopus_enable" type="checkbox" defaultValue="false" >
             <Label>Use associated Octopus Agile Tariff Device</Label>
             </Field>
-			<Field id="octopus_id" type="menu" visibleBindingId="octopus_enable" visibleBindingValue="true">
+			<Field id="octopusID" type="menu" visibleBindingId="octopus_enable" visibleBindingValue="true">
                 <Label>Agile Tariff Device:</Label>
                 <List class="self" filter="" method="getAgileDevices" dynamicReload="true"/>
             </Field>
@@ -63,6 +63,11 @@
 			<ValueType>Number</ValueType>
 			<TriggerLabel>Electricity Meter Reading</TriggerLabel>
 			<ControlPageLabel>Electricity Meter Reading</ControlPageLabel>
+            </State>
+            <State id="mpan">
+			<ValueType>String</ValueType>
+			<TriggerLabel>Meter Point Adminstration Number (Electricity)</TriggerLabel>
+			<ControlPageLabel>Meter Point Adminstration Number (Electricity)</ControlPageLabel>
             </State>
             <State id="agile_cost_hour">
 			<ValueType>Number</ValueType>
