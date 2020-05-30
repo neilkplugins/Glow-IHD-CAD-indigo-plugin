@@ -2,7 +2,7 @@
 <Devices>
 	<!-- Define some devices -->
 	<Device type="custom" id="GlowmarktCAD">
-		<Name>Glowmarkt Smart Meter</Name>
+		<Name>Glowmarkt Smart Meter MQTT</Name>
 		<ConfigUI>
             <SupportURL>http://forums.indigodomo.com/viewforum.php?f=xxx</SupportURL>
 			
@@ -66,8 +66,8 @@
             </State>
             <State id="mpan">
 			<ValueType>String</ValueType>
-			<TriggerLabel>Meter Point Adminstration Number (Electricity)</TriggerLabel>
-			<ControlPageLabel>Meter Point Adminstration Number (Electricity)</ControlPageLabel>
+			<TriggerLabel>Meter Point Administration Number (Electricity)</TriggerLabel>
+			<ControlPageLabel>Meter Point Administration Number (Electricity)</ControlPageLabel>
             </State>
             <State id="agile_cost_hour">
 			<ValueType>Number</ValueType>

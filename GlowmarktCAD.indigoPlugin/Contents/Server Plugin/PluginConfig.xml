@@ -1,10 +1,34 @@
 <?xml version="1.0"?>
 <PluginConfig>
-	<Field id="topLabel3" type="label" fontSize="small" fontColor="darkgray">
-		<Label>If you are having problems with the plugin (or you are instructed by support), you can enable extra logging in the Event Log window by checking this button. Use with caution.</Label>
+
+	<Field id="MQTT_enable" type="checkbox" defaultValue="false" >
+		<Label>Use MQTT to get "Real Time" Smart Meter Data</Label>
+	</Field>
+	<Field id="Label1" type="label" fontSize="small" fontColor="darkgray"><Label>This needs to be enabled by Glow/Hildebrand Support, and you need to configure the MQTT Connector plugin first as detailed in the Wiki, and you will need either an IHD/CAD or Glowstick</Label>
+	</Field>
+	<Field id="simpleseparator1" type="separator">
+	</Field>
+	<Field id="API_enable" type="checkbox" defaultValue="false" >
+		<Label>Use Glow API to get "additional and historic" Smart Meter Data</Label>
+	</Field>
+	<Field id="Label2" type="label" fontSize="small" fontColor="darkgray"><Label>You will need an account from www.glowmarkt.com and confirm data is available in the Bright App first before configuring</Label>
+	</Field>
+	<Field id="bright_account" type="textfield" visibleBindingId="API_enable" visibleBindingValue="true">
+		<Label>Glow/Bright Account eMail Address</Label>
+	</Field>
+	<Field id="bright_password" type="textfield" visibleBindingId="API_enable" visibleBindingValue="true" secure="true">
+		<Label>Glow/Bright Account Password</Label>
+	</Field>
+	<Field id="Label3" type="label" fontSize="small" fontColor="darkgray"><Label>Note: You will also need to provide credentials to the MQTT Connector if you want real time updates via MQTT, and these need to be updated in both plugins if your details change</Label>
+	</Field>
+	<Field id="simpleseparator2" type="separator">
+	</Field>
+	<Field id="Label4" type="label" fontSize="small" fontColor="darkgray"><Label>If you are having problems with the plugin (or you are instructed by support), you can enable extra logging in the Event Log window by checking this button. Use with caution.</Label>
+	</Field>
+	<Field id="simpleseparator3" type="separator">
 	</Field>
 	<Field id="showDebugInfo" type="checkbox">
-	<Label>Enable debuging:</Label>
-	<Description>(not recommended)</Description>
+		<Label>Enable debugging:</Label>
+		<Description>(not recommended)</Description>
 	</Field>
 </PluginConfig>

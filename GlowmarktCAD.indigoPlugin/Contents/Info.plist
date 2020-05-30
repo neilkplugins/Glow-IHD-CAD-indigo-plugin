@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>PluginVersion</key>
-	<string>0.0.1</string>
+	<string>0.0.2</string>
 	<key>ServerApiVersion</key>
 	<string>2.0</string>
 	<key>IwsApiVersion</key>
@@ -18,7 +18,7 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>https://github.com/neilkplugins/Octopus_Energy-indigo-plugin</string>
+			<string>https://github.com/neilkplugins/Glow-IHD-CAD-indigo-plugin/wiki</string>
 		</dict>
 	</array>
 </dict>
