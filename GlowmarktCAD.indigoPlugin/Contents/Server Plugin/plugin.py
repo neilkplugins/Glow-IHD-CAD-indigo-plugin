@@ -12,7 +12,7 @@ import indigo
 import requests
 import json
 import time
-import datetime
+from datetime import datetime
 
 
 ################################################################################
@@ -157,7 +157,7 @@ class Plugin(indigo.PluginBase):
 				errorsDict = indigo.Dict()
 				errorsDict['bright_password'] = "Password Cannot Be Empty"
 				return (False, valuesDict, errorsDict)
-		try:
+		try :
 			url = "https://api.glowmarkt.com/api/v0-1/auth"
 
 			payload = "{\n\"username\": \""+valuesDict['bright_account']+"\",\n\"password\": \""+valuesDict['bright_password']+"\"\n}"
@@ -170,7 +170,9 @@ class Plugin(indigo.PluginBase):
 			response = requests.request("POST", url, headers=headers, data = payload)
 			self.debugLog(response)
 			response_json = response.json()
-			if response_json['valid'] is not True:
+			self.debugLog(response_json)
+			self.debugLog(response_json['token'])
+			if response.status_code != 200:
 				self.errorLog("Failed to Authenticate with Glow Servers, Check Password and Account Name")
 				errorsDict = indigo.Dict()
 				errorsDict['bright_password'] = "Failed to Authenticate with Glow Servers, Check Password and Account Name"
@@ -178,6 +180,8 @@ class Plugin(indigo.PluginBase):
 			else:
 				self.pluginPrefs['token']=response_json['token']
 				self.pluginPrefs['token_expires']=response_json['exp']
+				self.debugLog("Token is "+ self.pluginPrefs['token'])
+				self.debugLog("Expiry is "+ str(self.pluginPrefs['token_expires']))
 		except:
 			self.debugLog("Unknown error connecting to Glowmarkt")
 			errorsDict = indigo.Dict()
@@ -216,3 +220,46 @@ class Plugin(indigo.PluginBase):
 
 		retList.sort(key=lambda tup: tup[1])
 		return retList
+
+	############################
+	# API Functions
+	#############################
+
+	def token_check_valid(self):
+		time_now = datetime.now() + timedelta(hours=1)
+		expiry_time=datetime.fromtimestamp(indigo.pluginPrefs['token_expires'])
+		if expiry_time > time_now:
+			self.debugLog("Time remaining on token is "+str(expiry_time - time_now))
+			return True
+		else:
+			self.debugLog("Get new Token - One hour or less remaining valid")
+			return False
+
+	def refresh_token(self):
+		url = "https://api.glowmarkt.com/api/v0-1/auth"
+
+		payload = "{\n\"username\": \"" + indigo.pluginPrefs['bright_account'] + "\",\n\"password\": \"" + indigo.pluginPrefs['bright_password'] + "\"\n}"
+		headers = {
+			'Content-Type': 'application/json',
+			'applicationId': "b0f1b774-a586-4f72-9edd-27ead8aa7a8d",
+			'Content-Type': 'application/json'
+		}
+		response = requests.request("POST", url, headers=headers, data=payload)
+		self.debugLog(response)
+		response_json = response.json()
+		self.debugLog(response_json)
+		self.debugLog(response_json['token'])
+		if response.status_code != 200:
+			self.errorLog("Failed to Authenticate with Glow Servers, Check Password and Account Name")
+			errorsDict = indigo.Dict()
+			errorsDict['bright_password'] = "Failed to Authenticate with Glow Servers, Check Password and Account Name"
+			return (False, valuesDict, errorsDict)
+		else:
+			self.pluginPrefs['token'] = response_json['token']
+			self.pluginPrefs['token_expires'] = response_json['exp']
+			self.debugLog("Token is " + self.pluginPrefs['token'])
+			self.debugLog("Expiry is " + str(self.pluginPrefs['token_expires']))
+
+
+	return
+
