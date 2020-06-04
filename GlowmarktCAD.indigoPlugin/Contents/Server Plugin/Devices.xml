@@ -4,17 +4,17 @@
 	<Device type="custom" id="GlowmarktCAD">
 		<Name>Glowmarkt Smart Meter MQTT</Name>
 		<ConfigUI>
-            <SupportURL>http://forums.indigodomo.com/viewforum.php?f=xxx</SupportURL>
+            <SupportURL>http-//forums.indigodomo.com/viewforum.php?f=xxx</SupportURL>
 			
             <Field id="brokerID" type="menu">
-                <Label>MQTT Broker:</Label>
+                <Label>MQTT Broker-</Label>
                 <List class="self" filter="" method="getBrokerDevices" dynamicReload="true"/>
             </Field>
             <Field id="octopus_enable" type="checkbox" defaultValue="false" >
             <Label>Use associated Octopus Agile Tariff Device</Label>
             </Field>
 			<Field id="octopusID" type="menu" visibleBindingId="octopus_enable" visibleBindingValue="true">
-                <Label>Agile Tariff Device:</Label>
+                <Label>Agile Tariff Device-</Label>
                 <List class="self" filter="" method="getAgileDevices" dynamicReload="true"/>
             </Field>
         </ConfigUI>
@@ -82,5 +82,257 @@
             
         </States>
         <UiDisplayStateId>elec_instantaneous</UiDisplayStateId>		
+	</Device>
+	<Device type="custom" id="GlowmarktElec_kWh">
+			<Name>Glowmarkt Electricity Consumption kWh</Name>
+		<ConfigUI>
+            <Field id="resource_type" type="menu">
+                <Label>Resource Type-</Label>
+                <List class="self" filter="" method="resourceListGenerator" />
+            </Field>
+
+        </ConfigUI>
+	<States>
+<State id="From-00-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-00-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-01-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-01-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-02-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-02-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-03-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-03-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-04-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-04-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-05-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-05-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-06-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-06-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-07-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-07-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-08-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-08-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-09-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-09-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-10-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-10-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-11-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-11-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-12-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-12-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-13-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-13-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-14-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-14-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-15-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-15-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-16-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-16-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-17-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-17-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-18-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-18-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-19-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-19-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-20-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-20-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-21-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-21-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-22-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-22-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-23-00">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+		<State id="From-23-30">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+</States>
 	</Device>
 </Devices>

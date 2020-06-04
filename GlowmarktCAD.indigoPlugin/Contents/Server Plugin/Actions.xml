@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Actions>
+	<Action id="refresh_daily_electricity" deviceFilter="self.GlowmarktElec_kWh" uiPath="DeviceActions">
+		<Name>Reresh Daily Consumption (30 mins)</Name>
+		<CallbackMethod>refresh_daily_electricity</CallbackMethod>
+	</Action>
+</Actions>
