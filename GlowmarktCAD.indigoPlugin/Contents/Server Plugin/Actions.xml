@@ -1,7 +1,18 @@
 <?xml version="1.0"?>
 <Actions>
-	<Action id="refresh_daily_electricity" deviceFilter="self.GlowmarktElec_kWh" uiPath="DeviceActions">
-		<Name>Reresh Daily Consumption (30 mins)</Name>
-		<CallbackMethod>refresh_daily_electricity</CallbackMethod>
-	</Action>
+<Action id="refresh_daily_consumption" deviceFilter="self.daily_Consumption" uiPath="DeviceActions">
+	<Name>Reresh Daily Consumption (30 mins) of chosen resource</Name>
+	<CallbackMethod>refresh_daily_consumption</CallbackMethod>
+	<ConfigUI>
+
+	<Field id="dayList" type="menu">
+<Label>Select an Option:</Label>
+<List>
+	<Option value="today">For Todays Rates (requires CAD Device)</Option>
+	<Option value="yesterday">Yesterdays Rates</Option>
+</List>
+</Field>
+				</ConfigUI>
+
+</Action>
 </Actions>

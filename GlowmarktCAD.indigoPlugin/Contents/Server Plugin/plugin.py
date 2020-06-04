@@ -216,7 +216,7 @@ class Plugin(indigo.PluginBase):
 	# UI Validate, Device Config
 	########################################
 	def validateDeviceConfigUi(self, valuesDict, typeId, device):
-		if typeId == "GlowmarktElec_kWh":
+		if typeId == "daily_Consumption":
 			return (True, valuesDict)
 		self.debugLog(valuesDict)
 		if valuesDict['brokerID'] == "":
@@ -325,8 +325,11 @@ class Plugin(indigo.PluginBase):
 		return resource_list
 
 
-	def refresh_daily_electricity(self, pluginAction, device):
-		today = str(date.today())
+	def refresh_daily_consumption(self, pluginAction, device):
+		if pluginAction.props['dayList'] == 'today':
+			today = str(date.today())
+		else:
+			today = str(date.today()- timedelta(days = 1))
 		resource_type = device.pluginProps['resource_type']
 		self.debugLog(resource_type)
 		resource = self.pluginPrefs[resource_type]
@@ -351,11 +354,17 @@ class Plugin(indigo.PluginBase):
 
 		device_states = []
 		state_count = 0
+		consumption_sum = 0
 		for rates in response_json['data']:
 			device_states.append({ 'key': state_list[state_count] , 'value' : rates[1] , 'decimalPlaces' : 4})
 
 			self.debugLog(state_list[state_count]+" "+str(rates[1]))
 			state_count += 1
+			consumption_sum = consumption_sum + rates[1]
+		device_states.append({'key': 'consumption_date', 'value': today })
+		device_states.append({'key': 'consumption_type', 'value': resource_type })
+		device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'decimalPlaces': 4})
+
 		device.updateStatesOnServer(device_states)
 
 

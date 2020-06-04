@@ -83,8 +83,8 @@
         </States>
         <UiDisplayStateId>elec_instantaneous</UiDisplayStateId>		
 	</Device>
-	<Device type="custom" id="GlowmarktElec_kWh">
-			<Name>Glowmarkt Electricity Consumption kWh</Name>
+	<Device type="custom" id="daily_Consumption">
+			<Name>Glowmarkt Daily Consumption </Name>
 		<ConfigUI>
             <Field id="resource_type" type="menu">
                 <Label>Resource Type-</Label>
@@ -93,6 +93,11 @@
 
         </ConfigUI>
 	<States>
+		<State id="consumption_date">
+			<ValueType>String</ValueType>
+			<TriggerLabel>Consumption Date</TriggerLabel>
+			<ControlPageLabel>Consumption Date</ControlPageLabel>
+            </State>
 <State id="From-00-00">
 			<ValueType>Number</ValueType>
 			<TriggerLabel>Current Electricity Usage</TriggerLabel>
@@ -333,6 +338,24 @@
 			<TriggerLabel>Current Electricity Usage</TriggerLabel>
 			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
             </State>
+
+		<State id="consumption_type">
+			<ValueType>String</ValueType>
+			<TriggerLabel>Consumption Type</TriggerLabel>
+			<ControlPageLabel>Consumption Type</ControlPageLabel>
+            </State>
+		<State id="consumption_unit">
+			<ValueType>String</ValueType>
+			<TriggerLabel>Consumption Unit</TriggerLabel>
+			<ControlPageLabel>Consumption Unit</ControlPageLabel>
+            </State>
+		<State id="consumption_sum">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Consumption Daily Sum</TriggerLabel>
+			<ControlPageLabel>Consumption Daily Sum</ControlPageLabel>
+            </State>
 </States>
+		<UiDisplayStateId>consumption_sum</UiDisplayStateId>
+
 	</Device>
 </Devices>
