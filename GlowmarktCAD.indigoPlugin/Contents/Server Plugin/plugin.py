@@ -13,6 +13,7 @@ import requests
 import json
 import time
 from datetime import datetime, timedelta, date
+import pytz
 
 
 ################################################################################
@@ -167,7 +168,7 @@ class Plugin(indigo.PluginBase):
 				if message_data == None:
 					return
 				payload_json = json.loads(message_data["payload"])
-				self.debugLog("Queue Fetch, Meter Data = {}".format(payload_json))
+				#self.debugLog("Queue Fetch, Meter Data = {}".format(payload_json))
 				device_states = []
 				try:
 					elec_instantaneous = int(payload_json['elecMtr']['0702']['04']['00'], 16)
@@ -197,7 +198,6 @@ class Plugin(indigo.PluginBase):
 					# If an agile tariff device is configured from the Octopus Energy Plugin then calculate the actual projected cost per hour
 					if device.pluginProps['octopus_enable']:
 						agile_device = device.pluginProps['octopusID']
-						self.debugLog(agile_device)
 						agile_cost = indigo.devices[int(agile_device)].states['Current_Electricity_Rate']
 						agile_cost_hour = (agile_cost * elec_instantaneous) / 1000
 						device_states.append({'key': 'agile_cost_hour', 'value': agile_cost_hour,
@@ -209,7 +209,7 @@ class Plugin(indigo.PluginBase):
 					self.debugLog("Failed to complete updates for Glow device " + device.name)
 					self.debugLog(e)
 		else:
-			self.debugLog("MQTT Connector not enabled or MQTT option not configured in Plugin Config - Skipping Message Queue Check or not an MQTT device")
+			self.debugLog("No update for "+device.name)
 		return
 
 	########################################
@@ -330,10 +330,17 @@ class Plugin(indigo.PluginBase):
 			today = str(date.today())
 		else:
 			today = str(date.today()- timedelta(days = 1))
+		isdst_now_in = lambda zonename: bool(datetime.now(pytz.timezone(zonename)).dst())
+		dst_applies = isdst_now_in("Europe/London")
+		if dst_applies:
+			offset = "-60"
+		else:
+			offset = "0"
+
 		resource_type = device.pluginProps['resource_type']
 		self.debugLog(resource_type)
 		resource = self.pluginPrefs[resource_type]
-		url = "https://api.glowmarkt.com/api/v0-1/resource/"+resource+"/readings?from="+today+"T00:00:00&to="+today+"T23:59:00&function=sum&period=PT30M"
+		url = "https://api.glowmarkt.com/api/v0-1/resource/"+resource+"/readings?from="+today+"T00:00:00&to="+today+"T23:59:00&function=sum&period=PT30M&offset="+offset
 
 		payload = {}
 		headers = {
@@ -357,13 +364,23 @@ class Plugin(indigo.PluginBase):
 		consumption_sum = 0
 		for rates in response_json['data']:
 			device_states.append({ 'key': state_list[state_count] , 'value' : rates[1] , 'decimalPlaces' : 4})
-
-			self.debugLog(state_list[state_count]+" "+str(rates[1]))
+			#self.debugLog(state_list[state_count]+" "+str(rates[1]))
 			state_count += 1
 			consumption_sum = consumption_sum + rates[1]
+
+		if resource_type =="electricity.consumption.cost":
+			device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'uiValue': str(round(consumption_sum,2))+" p"})
+		if	resource_type =="electricity.consumption":
+			device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'uiValue': str(round(consumption_sum,4)) + " kWh"})
+		if resource_type =="gas.consumption.cost":
+			device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'uiValue': str(round(consumption_sum,2))+" p"})
+		if	resource_type =="gas.consumption":
+			device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'uiValue': str(round(consumption_sum,4)) + " kWh"})
+
+
+
 		device_states.append({'key': 'consumption_date', 'value': today })
 		device_states.append({'key': 'consumption_type', 'value': resource_type })
-		device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'decimalPlaces': 4})
 
 		device.updateStatesOnServer(device_states)
 

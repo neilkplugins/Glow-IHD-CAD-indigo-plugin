@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Actions>
 <Action id="refresh_daily_consumption" deviceFilter="self.daily_Consumption" uiPath="DeviceActions">
-	<Name>Reresh Daily Consumption (30 mins) of chosen resource</Name>
+	<Name>Refresh Daily Resource Consumption/Cost</Name>
 	<CallbackMethod>refresh_daily_consumption</CallbackMethod>
 	<ConfigUI>
 
