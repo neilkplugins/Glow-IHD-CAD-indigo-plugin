@@ -41,7 +41,7 @@ def refresh_token(self):
 	url = "https://api.glowmarkt.com/api/v0-1/auth"
 
 	payload = "{\n\"username\": \"" + self.pluginPrefs['bright_account'] + "\",\n\"password\": \"" + \
-			  indigo.pluginPrefs['bright_password'] + "\"\n}"
+			  self.pluginPrefs['bright_password'] + "\"\n}"
 	headers = {
 		'Content-Type': 'application/json',
 		'applicationId': "b0f1b774-a586-4f72-9edd-27ead8aa7a8d",
@@ -336,6 +336,8 @@ class Plugin(indigo.PluginBase):
 			offset = "-60"
 		else:
 			offset = "0"
+		if not token_check_valid(self):
+			refresh_token(self)
 
 		resource_type = device.pluginProps['resource_type']
 		self.debugLog(resource_type)
