@@ -125,6 +125,23 @@ class Plugin(indigo.PluginBase):
 		self.debugLog("Starting device: " + device.name)
 		self.debugLog(str(device.id) + " " + device.name)
 		device.stateListOrDisplayStateIdChanged()
+		if device.deviceTypeId == "daily_Consumption":
+			newProps = device.pluginProps
+			if device.states['consumption_type'] == 'electricity.consumption.cost' :
+				newProps['address'] = "Electricity Cost"
+			elif device.states['consumption_type'] == 'electricity.consumption':
+				newProps['address'] = "Electricity Consumption"
+			elif device.states['consumption_type'] == 'gas.consumption':
+				newProps['address'] = "Gas Consumption"
+			elif device.states['consumption_type'] == 'gas.consumption.cost':
+				newProps['address'] = "Gas Cost"
+			else:
+				newProps['address']="-"
+			device.replacePluginPropsOnServer(newProps)
+		if device.deviceTypeId == "GlowmarktCAD":
+			newProps = device.pluginProps
+			newProps['address'] = device.states['mpan']
+			device.replacePluginPropsOnServer(newProps)
 		if device.id not in self.deviceList:
 			self.update(device)
 			self.deviceList.append(device.id)
