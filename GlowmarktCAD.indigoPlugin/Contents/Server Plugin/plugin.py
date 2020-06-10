@@ -26,6 +26,69 @@ state_list = ["From-00-00","From-00-30","From-01-00","From-01-30","From-02-00","
 # API Functions
 #############################
 
+
+def refresh_daily_consumption_device(self, device):
+	if device.pluginProps['dayList'] == 'today':
+		today = str(date.today())
+	else:
+		today = str(date.today() - timedelta(days=1))
+	isdst_now_in = lambda zonename: bool(datetime.now(pytz.timezone(zonename)).dst())
+	dst_applies = isdst_now_in("Europe/London")
+	if dst_applies:
+		offset = "-60"
+	else:
+		offset = "0"
+	if not token_check_valid(self):
+		refresh_token(self)
+
+	resource_type = device.pluginProps['resource_type']
+	self.debugLog(resource_type)
+	resource = self.pluginPrefs[resource_type]
+	url = "https://api.glowmarkt.com/api/v0-1/resource/" + resource + "/readings?from=" + today + "T00:00:00&to=" + today + "T23:59:00&function=sum&period=PT30M&offset=" + offset
+
+	payload = {}
+	headers = {
+		'Content-Type': 'application/json',
+		'applicationId': 'b0f1b774-a586-4f72-9edd-27ead8aa7a8d'
+	}
+	headers['token'] = self.pluginPrefs['token']
+	try:
+		response = requests.get(url, headers=headers, data=payload)
+		response.raise_for_status()
+	except requests.exceptions.HTTPError as err:
+		self.debugLog("HTTP Error updating 30 min elec rates")
+	except Exception as err:
+		self.debugLog("Other error 30 min elec")
+
+	response_json = response.json()
+
+	device_states = []
+	state_count = 0
+	consumption_sum = 0
+	for rates in response_json['data']:
+		device_states.append({'key': state_list[state_count], 'value': rates[1], 'decimalPlaces': 4})
+		# self.debugLog(state_list[state_count]+" "+str(rates[1]))
+		state_count += 1
+		consumption_sum = consumption_sum + rates[1]
+
+	if resource_type == "electricity.consumption.cost":
+		device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'decimalPlaces': 4,
+							  'uiValue': str(round(consumption_sum, 2)) + " p"})
+	if resource_type == "electricity.consumption":
+		device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'decimalPlaces': 4,
+							  'uiValue': str(round(consumption_sum, 4)) + " kWh"})
+	if resource_type == "gas.consumption.cost":
+		device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'decimalPlaces': 4,
+							  'uiValue': str(round(consumption_sum, 2)) + " p"})
+	if resource_type == "gas.consumption":
+		device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'decimalPlaces': 4,
+							  'uiValue': str(round(consumption_sum, 4)) + " kWh"})
+
+	device_states.append({'key': 'consumption_date', 'value': today})
+	device_states.append({'key': 'consumption_type', 'value': resource_type})
+
+	device.updateStatesOnServer(device_states)
+
 def token_check_valid(self):
 	time_now = datetime.now() + timedelta(hours=1)
 	expiry_time = datetime.fromtimestamp(self.pluginPrefs['token_expires'])
@@ -107,7 +170,6 @@ def get_resources(self):
 
 
 
-
 ################################################################################
 class Plugin(indigo.PluginBase):
 	########################################
@@ -171,6 +233,8 @@ class Plugin(indigo.PluginBase):
 		except self.StopThread:
 			pass
 
+
+
 	########################################
 	def update(self, device):
 		# device.stateListOrDisplayStateIdChanged()
@@ -199,12 +263,12 @@ class Plugin(indigo.PluginBase):
 					gas_week_consumption = float((int(payload_json['gasMtr']['0702']['0C']['30'], 16)) / 1000)
 					gas_month_consumption = float((int(payload_json['gasMtr']['0702']['0C']['40'], 16)) / 1000)
 					gas_daily_consumption = float((int(payload_json['gasMtr']['0702']['0C']['01'], 16)) / 1000)
-					device_states.append({'key': 'elec_month_consumption', 'value': elec_month_consumption})
-					device_states.append({'key': 'elec_week_consumption', 'value': elec_week_consumption})
-					device_states.append({'key': 'elec_daily_consumption', 'value': elec_daily_consumption})
-					device_states.append({'key': 'gas_month_consumption', 'value': gas_month_consumption})
-					device_states.append({'key': 'gas_week_consumption', 'value': gas_week_consumption})
-					device_states.append({'key': 'gas_daily_consumption', 'value': gas_daily_consumption})
+					device_states.append({'key': 'elec_month_consumption', 'value': elec_month_consumption, 'decimalPlaces' : 2})
+					device_states.append({'key': 'elec_week_consumption', 'value': elec_week_consumption, 'decimalPlaces' : 2})
+					device_states.append({'key': 'elec_daily_consumption', 'value': elec_daily_consumption,'decimalPlaces' : 4})
+					device_states.append({'key': 'gas_month_consumption', 'value': gas_month_consumption,'decimalPlaces' : 2})
+					device_states.append({'key': 'gas_week_consumption', 'value': gas_week_consumption,'decimalPlaces' : 2})
+					device_states.append({'key': 'gas_daily_consumption', 'value': gas_daily_consumption,'decimalPlaces' : 2})
 					device_states.append({'key': 'gas_meter', 'value': gas_meter})
 					device_states.append({'key': 'electricity_meter', 'value': electricity_meter})
 					device_states.append({'key': 'electricity_supplier', 'value': electricity_supplier})
@@ -217,8 +281,7 @@ class Plugin(indigo.PluginBase):
 						agile_device = device.pluginProps['octopusID']
 						agile_cost = indigo.devices[int(agile_device)].states['Current_Electricity_Rate']
 						agile_cost_hour = (agile_cost * elec_instantaneous) / 1000
-						device_states.append({'key': 'agile_cost_hour', 'value': agile_cost_hour,
-											  'uiValue': str(agile_cost_hour) + " p"})
+						device_states.append({'key': 'agile_cost_hour', 'value': agile_cost_hour, 'decimalPlaces' : 4,'uiValue': str(agile_cost_hour) + " p"})
 
 					device.updateStatesOnServer(device_states)
 					device.updateStateImageOnServer(indigo.kStateImageSel.EnergyMeterOn)
@@ -227,6 +290,16 @@ class Plugin(indigo.PluginBase):
 					self.debugLog(e)
 		else:
 			self.debugLog("No update for "+device.name)
+		if device.deviceTypeId =="daily_Consumption":
+			update_time = device.lastChanged
+			now = datetime.now()
+			refresh_time = now - update_time
+			self.debugLog(update_time)
+			self.debugLog(now)
+			self.debugLog(now - update_time)
+			if refresh_time.total_seconds() > 100:
+				self.debugLog("Updating device")
+				refresh_daily_consumption_device(self,device)
 		return
 
 	########################################
@@ -340,70 +413,5 @@ class Plugin(indigo.PluginBase):
 			self.debugLog(resource)
 			resource_list.append((resource,resource))
 		return resource_list
-
-
-	def refresh_daily_consumption(self, pluginAction, device):
-		if pluginAction.props['dayList'] == 'today':
-			today = str(date.today())
-		else:
-			today = str(date.today()- timedelta(days = 1))
-		isdst_now_in = lambda zonename: bool(datetime.now(pytz.timezone(zonename)).dst())
-		dst_applies = isdst_now_in("Europe/London")
-		if dst_applies:
-			offset = "-60"
-		else:
-			offset = "0"
-		if not token_check_valid(self):
-			refresh_token(self)
-
-		resource_type = device.pluginProps['resource_type']
-		self.debugLog(resource_type)
-		resource = self.pluginPrefs[resource_type]
-		url = "https://api.glowmarkt.com/api/v0-1/resource/"+resource+"/readings?from="+today+"T00:00:00&to="+today+"T23:59:00&function=sum&period=PT30M&offset="+offset
-
-		payload = {}
-		headers = {
-			'Content-Type': 'application/json',
-			'applicationId': 'b0f1b774-a586-4f72-9edd-27ead8aa7a8d'
-		}
-		headers['token']=self.pluginPrefs['token']
-		try:
-			response = requests.get(url, headers=headers, data=payload)
-			response.raise_for_status()
-		except requests.exceptions.HTTPError as err:
-			self.debugLog("HTTP Error updating 30 min elec rates")
-		except Exception as err:
-			self.debugLog("Other error 30 min elec")
-
-
-		response_json = response.json()
-
-		device_states = []
-		state_count = 0
-		consumption_sum = 0
-		for rates in response_json['data']:
-			device_states.append({ 'key': state_list[state_count] , 'value' : rates[1] , 'decimalPlaces' : 4})
-			#self.debugLog(state_list[state_count]+" "+str(rates[1]))
-			state_count += 1
-			consumption_sum = consumption_sum + rates[1]
-
-		if resource_type =="electricity.consumption.cost":
-			device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'uiValue': str(round(consumption_sum,2))+" p"})
-		if	resource_type =="electricity.consumption":
-			device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'uiValue': str(round(consumption_sum,4)) + " kWh"})
-		if resource_type =="gas.consumption.cost":
-			device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'uiValue': str(round(consumption_sum,2))+" p"})
-		if	resource_type =="gas.consumption":
-			device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'uiValue': str(round(consumption_sum,4)) + " kWh"})
-
-
-
-		device_states.append({'key': 'consumption_date', 'value': today })
-		device_states.append({'key': 'consumption_type', 'value': resource_type })
-
-		device.updateStatesOnServer(device_states)
-
-
-
 
 

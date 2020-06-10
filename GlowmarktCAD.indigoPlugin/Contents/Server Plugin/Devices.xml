@@ -90,6 +90,13 @@
                 <Label>Resource Type-</Label>
                 <List class="self" filter="" method="resourceListGenerator" />
             </Field>
+<Field id="dayList" type="menu">
+<Label>Select an Option:</Label>
+<List>
+	<Option value="today">For Todays Rates (requires CAD Device)</Option>
+	<Option value="yesterday">Yesterdays Rates</Option>
+</List>
+</Field>
 
         </ConfigUI>
 	<States>
