@@ -294,10 +294,8 @@ class Plugin(indigo.PluginBase):
 			update_time = device.lastChanged
 			now = datetime.now()
 			refresh_time = now - update_time
-			self.debugLog(update_time)
-			self.debugLog(now)
-			self.debugLog(now - update_time)
-			if refresh_time.total_seconds() > 100:
+
+			if refresh_time.total_seconds() > (int(self.pluginPrefs.get('refresh_frequency'))*60):
 				self.debugLog("Updating device")
 				refresh_daily_consumption_device(self,device)
 		return
