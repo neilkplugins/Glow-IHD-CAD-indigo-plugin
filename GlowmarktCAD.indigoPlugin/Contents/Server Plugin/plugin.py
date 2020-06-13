@@ -65,9 +65,24 @@ def refresh_daily_consumption_device(self, device):
 	device_states = []
 	state_count = 0
 	consumption_sum = 0
+	now = datetime.now()
+	isdst_now_in = lambda zonename: bool(datetime.now(pytz.timezone(zonename)).dst())
+	dst_applies = isdst_now_in("Europe/London")
+	if dst_applies:
+		now=now+ timedelta(hours=1)
+	if int(now.strftime("%M")) > 29:
+		current_tariff_valid_period = (now.strftime("%Y-%m-%d %H:30:00"))
+	else:
+		current_tariff_valid_period = (now.strftime("%Y-%m-%d %H:00:00"))
+	self.debugLog(current_tariff_valid_period)
 	for rates in response_json['data']:
 		device_states.append({'key': state_list[state_count], 'value': rates[1], 'decimalPlaces': 4})
-		# self.debugLog(state_list[state_count]+" "+str(rates[1]))
+		self.debugLog(datetime.fromtimestamp(rates[0]))
+		if str(datetime.fromtimestamp(rates[0]))==current_tariff_valid_period:
+			device_states.append({'key': 'consumption_this_period', 'value': rates[1], 'decimalPlaces': 4})
+			self.debugLog("Found a match "+str(datetime.fromtimestamp(rates[0]))+" and "+current_tariff_valid_period)
+		else:
+			self.debugLog("No match "+str(datetime.fromtimestamp(rates[0]))+" and "+current_tariff_valid_period)
 		state_count += 1
 		consumption_sum = consumption_sum + rates[1]
 
@@ -258,6 +273,7 @@ class Plugin(indigo.PluginBase):
 					elec_week_consumption = float((int(payload_json['elecMtr']['0702']['04']['30'], 16)) / 1000)
 					electricity_supplier = payload_json['elecMtr']['0708']['01']['01']
 					mpan = payload_json['elecMtr']['0702']['03']['07']
+					meter_status = payload_json['pan']['status']
 					electricity_meter = float((int(payload_json['elecMtr']['0702']['00']['00'], 16)) / 1000)
 					gas_meter = float((int(payload_json['gasMtr']['0702']['00']['00'], 16)) / 1000)
 					gas_week_consumption = float((int(payload_json['gasMtr']['0702']['0C']['30'], 16)) / 1000)
@@ -273,6 +289,8 @@ class Plugin(indigo.PluginBase):
 					device_states.append({'key': 'electricity_meter', 'value': electricity_meter})
 					device_states.append({'key': 'electricity_supplier', 'value': electricity_supplier})
 					device_states.append({'key': 'mpan', 'value': mpan})
+					device_states.append({'key': 'meter_status', 'value': meter_status})
+
 
 					device_states.append({'key': 'elec_instantaneous', 'value': elec_instantaneous,
 										  'uiValue': str(elec_instantaneous) + " W", 'clearErrorState': True})

@@ -79,7 +79,11 @@
 			<TriggerLabel>Electricity Supplier</TriggerLabel>
 			<ControlPageLabel>Electricity Supplier</ControlPageLabel>
             </State>
-            
+            <State id="meter_status">
+			<ValueType>String</ValueType>
+			<TriggerLabel>Electricity Supplier</TriggerLabel>
+			<ControlPageLabel>Electricity Supplier</ControlPageLabel>
+            </State>
         </States>
         <UiDisplayStateId>elec_instantaneous</UiDisplayStateId>		
 	</Device>
@@ -91,7 +95,7 @@
                 <List class="self" filter="" method="resourceListGenerator" />
             </Field>
 <Field id="dayList" type="menu">
-<Label>Select an Option:</Label>
+<Label>Choose:</Label>
 <List>
 	<Option value="today">For Todays Rates (requires CAD Device)</Option>
 	<Option value="yesterday">Yesterdays Rates</Option>
@@ -351,12 +355,13 @@
 			<TriggerLabel>Consumption Type</TriggerLabel>
 			<ControlPageLabel>Consumption Type</ControlPageLabel>
             </State>
-		<State id="consumption_unit">
-			<ValueType>String</ValueType>
-			<TriggerLabel>Consumption Unit</TriggerLabel>
-			<ControlPageLabel>Consumption Unit</ControlPageLabel>
-            </State>
+
 		<State id="consumption_sum">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Consumption Daily Sum</TriggerLabel>
+			<ControlPageLabel>Consumption Daily Sum</ControlPageLabel>
+            </State>
+		<State id="consumption_this_period">
 			<ValueType>Number</ValueType>
 			<TriggerLabel>Consumption Daily Sum</TriggerLabel>
 			<ControlPageLabel>Consumption Daily Sum</ControlPageLabel>
