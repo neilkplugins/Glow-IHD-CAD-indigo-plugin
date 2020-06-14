@@ -292,9 +292,13 @@ class Plugin(indigo.PluginBase):
 
 					device.updateStatesOnServer(device_states)
 					device.updateStateImageOnServer(indigo.kStateImageSel.EnergyMeterOn)
+					if meter_status !="joined":
+						device.setErrorStateOnServer('Meter Error Check CAD')
+
+
 				except Exception as e:
-					self.debugLog("Failed to complete updates for Glow device " + device.name)
-					self.debugLog(e)
+					self.errorLog("Failed to complete updates for Glow device " + device.name)
+					device.setErrorStateOnServer('Meter Error MQTT')
 		else:
 			self.debugLog("No update for "+device.name)
 		if device.deviceTypeId =="daily_Consumption":
