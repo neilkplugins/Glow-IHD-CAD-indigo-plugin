@@ -42,7 +42,6 @@ def refresh_daily_consumption_device(self, device):
 		refresh_token(self)
 
 	resource_type = device.pluginProps['resource_type']
-	self.debugLog(resource_type)
 	resource = self.pluginPrefs[resource_type]
 	url = "https://api.glowmarkt.com/api/v0-1/resource/" + resource + "/readings?from=" + today + "T00:00:00&to=" + today + "T23:59:00&function=sum&period=PT30M&offset=" + offset
 
@@ -74,15 +73,11 @@ def refresh_daily_consumption_device(self, device):
 		current_tariff_valid_period = (now.strftime("%Y-%m-%d %H:30:00"))
 	else:
 		current_tariff_valid_period = (now.strftime("%Y-%m-%d %H:00:00"))
-	self.debugLog(current_tariff_valid_period)
 	for rates in response_json['data']:
 		device_states.append({'key': state_list[state_count], 'value': rates[1], 'decimalPlaces': 4})
-		self.debugLog(datetime.fromtimestamp(rates[0]))
 		if str(datetime.fromtimestamp(rates[0]))==current_tariff_valid_period:
 			device_states.append({'key': 'consumption_this_period', 'value': rates[1], 'decimalPlaces': 4})
-			self.debugLog("Found a match "+str(datetime.fromtimestamp(rates[0]))+" and "+current_tariff_valid_period)
-		else:
-			self.debugLog("No match "+str(datetime.fromtimestamp(rates[0]))+" and "+current_tariff_valid_period)
+
 		state_count += 1
 		consumption_sum = consumption_sum + rates[1]
 
@@ -132,10 +127,7 @@ def refresh_token(self):
 	except Exception as err:
 		self.debugLog("Other error when refreshing token")
 
-	self.debugLog(response)
 	response_json = response.json()
-	self.debugLog(response_json)
-	self.debugLog(response_json['token'])
 	if response.status_code != 200:
 		self.errorLog("Failed to Authenticate with Glow Servers, Check Password and Account Name")
 		errorsDict = indigo.Dict()
@@ -168,7 +160,6 @@ def get_resources(self):
 		self.debugLog("HTTP Error when collecting resources")
 	except Exception as err:
 		self.debugLog("Other error when collecting resources")
-	self.debugLog(response.text.encode('utf8'))
 	response_json = response.json()
 	resource_list=[]
 	if response.status_code == 200:
@@ -200,7 +191,6 @@ class Plugin(indigo.PluginBase):
 	########################################
 	def deviceStartComm(self, device):
 		self.debugLog("Starting device: " + device.name)
-		self.debugLog(str(device.id) + " " + device.name)
 		device.stateListOrDisplayStateIdChanged()
 		if device.deviceTypeId == "daily_Consumption":
 			newProps = device.pluginProps
@@ -244,7 +234,6 @@ class Plugin(indigo.PluginBase):
 				for deviceId in self.deviceList:
 					# call the update method with the device instance
 					self.update(indigo.devices[deviceId])
-					self.debugLog("Checking the Message Queue")
 		except self.StopThread:
 			pass
 
