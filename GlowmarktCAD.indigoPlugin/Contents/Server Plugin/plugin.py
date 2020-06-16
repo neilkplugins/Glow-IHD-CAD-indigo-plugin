@@ -268,12 +268,12 @@ class Plugin(indigo.PluginBase):
 					gas_week_consumption = float((int(payload_json['gasMtr']['0702']['0C']['30'], 16)) / 1000)
 					gas_month_consumption = float((int(payload_json['gasMtr']['0702']['0C']['40'], 16)) / 1000)
 					gas_daily_consumption = float((int(payload_json['gasMtr']['0702']['0C']['01'], 16)) / 1000)
-					device_states.append({'key': 'elec_month_consumption', 'value': elec_month_consumption, 'decimalPlaces' : 2})
-					device_states.append({'key': 'elec_week_consumption', 'value': elec_week_consumption, 'decimalPlaces' : 2})
-					device_states.append({'key': 'elec_daily_consumption', 'value': elec_daily_consumption,'decimalPlaces' : 4})
-					device_states.append({'key': 'gas_month_consumption', 'value': gas_month_consumption,'decimalPlaces' : 2})
-					device_states.append({'key': 'gas_week_consumption', 'value': gas_week_consumption,'decimalPlaces' : 2})
-					device_states.append({'key': 'gas_daily_consumption', 'value': gas_daily_consumption,'decimalPlaces' : 2})
+					device_states.append({'key': 'elec_month_consumption', 'value': elec_month_consumption, 'decimalPlaces' : 2, 'uiValue' : str(elec_month_consumption)+" kWh"})
+					device_states.append({'key': 'elec_week_consumption', 'value': elec_week_consumption, 'decimalPlaces' : 2,'uiValue' : str(elec_week_consumption)+" kWh"})
+					device_states.append({'key': 'elec_daily_consumption', 'value': elec_daily_consumption,'decimalPlaces' : 2, 'uiValue' : str(elec_daily_consumption)+" kWh"})
+					device_states.append({'key': 'gas_month_consumption', 'value': gas_month_consumption,'decimalPlaces' : 2,'uiValue' : str(gas_month_consumption)+" kWh"})
+					device_states.append({'key': 'gas_week_consumption', 'value': gas_week_consumption,'decimalPlaces' : 2,'uiValue' : str(gas_week_consumption)+" kWh" })
+					device_states.append({'key': 'gas_daily_consumption', 'value': gas_daily_consumption,'decimalPlaces' : 2, 'uiValue' : str(gas_daily_consumption)+" kWh"})
 					device_states.append({'key': 'gas_meter', 'value': gas_meter})
 					device_states.append({'key': 'electricity_meter', 'value': electricity_meter})
 					device_states.append({'key': 'electricity_supplier', 'value': electricity_supplier})
@@ -288,7 +288,7 @@ class Plugin(indigo.PluginBase):
 						agile_device = device.pluginProps['octopusID']
 						agile_cost = indigo.devices[int(agile_device)].states['Current_Electricity_Rate']
 						agile_cost_hour = (agile_cost * elec_instantaneous) / 1000
-						device_states.append({'key': 'agile_cost_hour', 'value': agile_cost_hour, 'decimalPlaces' : 4,'uiValue': str(agile_cost_hour) + " p"})
+						device_states.append({'key': 'agile_cost_hour', 'value': agile_cost_hour, 'decimalPlaces' : 2,'uiValue': str(agile_cost_hour) + " p"})
 
 					device.updateStatesOnServer(device_states)
 					device.updateStateImageOnServer(indigo.kStateImageSel.EnergyMeterOn)

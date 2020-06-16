@@ -81,8 +81,8 @@
             </State>
             <State id="meter_status">
 			<ValueType>String</ValueType>
-			<TriggerLabel>Electricity Supplier</TriggerLabel>
-			<ControlPageLabel>Electricity Supplier</ControlPageLabel>
+			<TriggerLabel>Meter Status</TriggerLabel>
+			<ControlPageLabel>Meter Status</ControlPageLabel>
             </State>
         </States>
         <UiDisplayStateId>elec_instantaneous</UiDisplayStateId>		
