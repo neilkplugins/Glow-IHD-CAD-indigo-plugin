@@ -85,14 +85,14 @@ def refresh_daily_consumption_device(self, device):
 		device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'decimalPlaces': 4,
 							  'uiValue': str(round(consumption_sum, 2)) + " p"})
 	if resource_type == "electricity.consumption":
-		device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'decimalPlaces': 4,
-							  'uiValue': str(round(consumption_sum, 4)) + " kWh"})
+		device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'decimalPlaces': 2,
+							  'uiValue': str(round(consumption_sum, 2)) + " kWh"})
 	if resource_type == "gas.consumption.cost":
 		device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'decimalPlaces': 4,
 							  'uiValue': str(round(consumption_sum, 2)) + " p"})
 	if resource_type == "gas.consumption":
-		device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'decimalPlaces': 4,
-							  'uiValue': str(round(consumption_sum, 4)) + " kWh"})
+		device_states.append({'key': 'consumption_sum', 'value': consumption_sum, 'decimalPlaces': 2,
+							  'uiValue': str(round(consumption_sum, 2)) + " kWh"})
 
 	device_states.append({'key': 'consumption_date', 'value': today})
 	device_states.append({'key': 'consumption_type', 'value': resource_type})
@@ -197,9 +197,9 @@ class Plugin(indigo.PluginBase):
 			if device.states['consumption_type'] == 'electricity.consumption.cost' :
 				newProps['address'] = "Electricity Cost"
 			elif device.states['consumption_type'] == 'electricity.consumption':
-				newProps['address'] = "Electricity Consumption"
+				newProps['address'] = "Electricity Usage"
 			elif device.states['consumption_type'] == 'gas.consumption':
-				newProps['address'] = "Gas Consumption"
+				newProps['address'] = "Gas Usage"
 			elif device.states['consumption_type'] == 'gas.consumption.cost':
 				newProps['address'] = "Gas Cost"
 			else:
