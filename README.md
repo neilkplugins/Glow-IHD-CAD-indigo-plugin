@@ -13,4 +13,6 @@ The plugin appears as an energy monitoring device in Indigo that also shows the 
 
 Documentation is https://github.com/neilkplugins/Glow-IHD-CAD-indigo-plugin/wiki
 
-The current versions are alpha, and by using it then you will experience errors, including on the interpretation of the data (that is done by the plugin) but you will help me test and validate this.
+The current versions are tested but only by myself at this stage, and by using it then you may experience errors, including on the interpretation of the data (that is done by the plugin) but you will help me test and validate this.
+
+Known Limitations :  I cannot test against a SMETS 1 Meter and Hildebrand's glow stick.  This is likely to impact the MQTT real time functionality, but with a little cooperation in testing it should be possible to address this very quickly.  The other area that may be different is between SMETS1 which reports Gas Usage in kWH and SMETS2 which reports in Cubic Meters.  My understanding is the API does the necessary conversion, but again I cannot validate that assumption
