@@ -288,7 +288,7 @@ class Plugin(indigo.PluginBase):
 						agile_device = device.pluginProps['octopusID']
 						agile_cost = indigo.devices[int(agile_device)].states['Current_Electricity_Rate']
 						agile_cost_hour = (agile_cost * elec_instantaneous) / 1000
-						device_states.append({'key': 'agile_cost_hour', 'value': agile_cost_hour, 'decimalPlaces' : 2,'uiValue': str(agile_cost_hour) + " p"})
+						device_states.append({'key': 'agile_cost_hour', 'value': agile_cost_hour, 'decimalPlaces' : 2,'uiValue': str(round(agile_cost_hour,2)) + " p"})
 
 					device.updateStatesOnServer(device_states)
 					device.updateStateImageOnServer(indigo.kStateImageSel.EnergyMeterOn)
@@ -298,6 +298,8 @@ class Plugin(indigo.PluginBase):
 
 				except Exception as e:
 					self.errorLog("Failed to complete updates for Glow device " + device.name)
+					self.debugLog(e)
+					self.debugLog(payload_json)
 					device.setErrorStateOnServer('Meter Error MQTT')
 		else:
 			self.debugLog("No update for "+device.name)
