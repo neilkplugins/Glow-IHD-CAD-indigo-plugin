@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<Actions>
+	<Action id="todayToFile" deviceFilter="self.OctopusEnergy" uiPath="DeviceActions">
+		<Name>Write todays rates to file</Name>
+		<CallbackMethod>todayToFile</CallbackMethod>
+	</Action>
+	<Action id="yesterdayToFile" deviceFilter="self.OctopusEnergy" uiPath="DeviceActions">
+		<Name>Write yesterdays rates to file</Name>
+		<CallbackMethod>yesterdayToFile</CallbackMethod>
+	</Action>
+</Actions>
