@@ -111,243 +111,243 @@
             </State>
 <State id="From-00-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 00:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 00:00</ControlPageLabel>
             </State>
 		<State id="From-00-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 00:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 00:30</ControlPageLabel>
             </State>
 		<State id="From-01-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 01:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 01:00</ControlPageLabel>
             </State>
 		<State id="From-01-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 01:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 01:30</ControlPageLabel>
             </State>
 		<State id="From-02-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 02:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 02:00</ControlPageLabel>
             </State>
 		<State id="From-02-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 02:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 02:30</ControlPageLabel>
             </State>
 		<State id="From-03-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 03:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 03:00</ControlPageLabel>
             </State>
 		<State id="From-03-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 03:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 03:30</ControlPageLabel>
             </State>
 		<State id="From-04-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 04:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 04:00</ControlPageLabel>
             </State>
 		<State id="From-04-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 04:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 04:30</ControlPageLabel>
             </State>
 		<State id="From-05-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 05:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 05:00</ControlPageLabel>
             </State>
 		<State id="From-05-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 05:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 05:30</ControlPageLabel>
             </State>
 		<State id="From-06-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 06:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 06:00</ControlPageLabel>
             </State>
 		<State id="From-06-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 06:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 06:30</ControlPageLabel>
             </State>
 		<State id="From-07-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 07:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 07:00</ControlPageLabel>
             </State>
 		<State id="From-07-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 07:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 07:30</ControlPageLabel>
             </State>
 		<State id="From-08-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 08:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 08:00</ControlPageLabel>
             </State>
 		<State id="From-08-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 08:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 08:30</ControlPageLabel>
             </State>
 		<State id="From-09-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 09:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 09:00</ControlPageLabel>
             </State>
 		<State id="From-09-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 09:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 09:30</ControlPageLabel>
             </State>
 		<State id="From-10-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 10:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 10:00</ControlPageLabel>
             </State>
 		<State id="From-10-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 10:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 10:30</ControlPageLabel>
             </State>
 		<State id="From-11-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 11:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 11:00</ControlPageLabel>
             </State>
 		<State id="From-11-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 11:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 11:30</ControlPageLabel>
             </State>
 		<State id="From-12-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 12:00</TriggerLabel>
+			<ControlPageLabel>Consumption 12:00</ControlPageLabel>
             </State>
 		<State id="From-12-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 12:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 12:30</ControlPageLabel>
             </State>
 		<State id="From-13-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 13:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 13:00</ControlPageLabel>
             </State>
 		<State id="From-13-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 13:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 13:30</ControlPageLabel>
             </State>
 		<State id="From-14-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 14:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 14:00</ControlPageLabel>
             </State>
 		<State id="From-14-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 14:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 14:30</ControlPageLabel>
             </State>
 		<State id="From-15-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 15:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 15:00</ControlPageLabel>
             </State>
 		<State id="From-15-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 15:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 15:30</ControlPageLabel>
             </State>
 		<State id="From-16-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 16:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 16:00</ControlPageLabel>
             </State>
 		<State id="From-16-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 16:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 16:30</ControlPageLabel>
             </State>
 		<State id="From-17-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 17:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 17:00</ControlPageLabel>
             </State>
 		<State id="From-17-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 17:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 17:30</ControlPageLabel>
             </State>
 		<State id="From-18-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 18:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 18:00</ControlPageLabel>
             </State>
 		<State id="From-18-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 18:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 18:30</ControlPageLabel>
             </State>
 		<State id="From-19-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 19:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 19:00</ControlPageLabel>
             </State>
 		<State id="From-19-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 19:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 19:30</ControlPageLabel>
             </State>
 		<State id="From-20-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 20:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 20:00</ControlPageLabel>
             </State>
 		<State id="From-20-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 20:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 20:30</ControlPageLabel>
             </State>
 		<State id="From-21-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 21:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 21:00</ControlPageLabel>
             </State>
 		<State id="From-21-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 21:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 21:30</ControlPageLabel>
             </State>
 		<State id="From-22-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 22:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 22:00</ControlPageLabel>
             </State>
 		<State id="From-22-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 22:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 22:30</ControlPageLabel>
             </State>
 		<State id="From-23-00">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 23:00</TriggerLabel>
+			<ControlPageLabel>Consumption from 23:00</ControlPageLabel>
             </State>
 		<State id="From-23-30">
 			<ValueType>Number</ValueType>
-			<TriggerLabel>Current Electricity Usage</TriggerLabel>
-			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+			<TriggerLabel>Consumption from 23:30</TriggerLabel>
+			<ControlPageLabel>Consumption from 23:30</ControlPageLabel>
             </State>
 
 		<State id="consumption_type">
