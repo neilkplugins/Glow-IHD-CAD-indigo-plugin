@@ -232,7 +232,7 @@
 		<State id="From-12-00">
 			<ValueType>Number</ValueType>
 			<TriggerLabel>Consumption from 12:00</TriggerLabel>
-			<ControlPageLabel>Consumption 12:00</ControlPageLabel>
+			<ControlPageLabel>Consumption from 12:00</ControlPageLabel>
             </State>
 		<State id="From-12-30">
 			<ValueType>Number</ValueType>
