@@ -40,7 +40,7 @@ def refresh_daily_consumption_device(self, device):
 		offset = "0"
 	if not token_check_valid(self):
 		refresh_token(self)
-
+	api_error = False
 	resource_type = device.pluginProps['resource_type']
 	resource = self.pluginPrefs[resource_type]
 	url = "https://api.glowmarkt.com/api/v0-1/resource/" + resource + "/readings?from=" + today + "T00:00:00&to=" + today + "T23:59:00&function=sum&period=PT30M&offset=" + offset
@@ -55,10 +55,16 @@ def refresh_daily_consumption_device(self, device):
 		response = requests.get(url, headers=headers, data=payload)
 		response.raise_for_status()
 	except requests.exceptions.HTTPError as err:
-		self.debugLog("HTTP Error updating 30 min elec rates")
+		indigo.server.log("HTTP Error from Glowmarkt API refreshing 30 min elec usage - Will retry next cycle")
+		self.debugLog("Error is "+ str(err))
+		api_error = True
 	except Exception as err:
-		self.debugLog("Other error 30 min elec")
-
+		indigo.server.log("Unknown/Other Error from Glowmarkt API refreshing 30 min elec - Will retry next cycle")
+		self.debugLog("Error is "+ str(err))
+		api_error = True
+	if api_error :
+		indigo.server.log("Aborting update cycle")
+		return
 	response_json = response.json()
 
 	device_states = []
@@ -158,8 +164,10 @@ def get_resources(self):
 		response.raise_for_status()
 	except requests.exceptions.HTTPError as err:
 		self.debugLog("HTTP Error when collecting resources")
+		return False
 	except Exception as err:
 		self.debugLog("Other error when collecting resources")
+		return False
 	response_json = response.json()
 	resource_list=[]
 	if response.status_code == 200:
