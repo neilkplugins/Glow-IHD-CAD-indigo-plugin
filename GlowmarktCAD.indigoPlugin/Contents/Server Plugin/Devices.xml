@@ -17,6 +17,8 @@
                 <Label>Agile Tariff Device-</Label>
                 <List class="self" filter="" method="getAgileDevices" dynamicReload="true"/>
             </Field>
+
+
         </ConfigUI>
 		<States>
 		<State id="elec_instantaneous">
@@ -97,11 +99,17 @@
 <Field id="dayList" type="menu">
 <Label>Choose:</Label>
 <List>
-	<Option value="today">For Todays Rates (requires CAD Device)</Option>
+	<Option value="today">For Todays Rates (requires CAD Device others updates will be no more than every 30 mins)</Option>
 	<Option value="yesterday">Yesterdays Rates</Option>
 </List>
 </Field>
-
+			<Field id="simpleseparator1" type="separator">
+	</Field>
+<Field id="Pound_enable" type="checkbox" defaultValue="false" >
+		<Label>Present Daily Usage Data in £ vs pence</Label>
+	</Field>
+	<Field id="Label2" type="label" fontSize="small" fontColor="darkgray"><Label>If checked the device state will be shown in £, unchecked in pence to 2 decimal places for daily consumption devices</Label>
+	</Field>
         </ConfigUI>
 	<States>
 		<State id="consumption_date">
