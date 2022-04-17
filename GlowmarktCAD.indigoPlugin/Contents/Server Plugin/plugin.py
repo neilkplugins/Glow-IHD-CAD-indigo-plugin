@@ -171,7 +171,7 @@ def refresh_token(self):
 		'applicationId': "b0f1b774-a586-4f72-9edd-27ead8aa7a8d",
 	}
 	try:
-		response = requests.request("POST", url, headers=headers, data=payload)
+		response = requests.request("POST", url, headers=headers, data=payload )
 		response.raise_for_status()
 	except requests.exceptions.HTTPError as err:
 		self.debugLog("HTTP Error when refreshing token")
@@ -432,7 +432,7 @@ class Plugin(indigo.PluginBase):
 				'Content-Type': 'application/json'
 			}
 			try:
-				response = requests.request("POST", url, headers=headers, data=payload)
+				response = requests.request("POST", url, headers=headers, data=payload )
 				response.raise_for_status()
 			except requests.exceptions.HTTPError as err:
 				self.debugLog("HTTP Error when authenticating to Glowmarkt")
