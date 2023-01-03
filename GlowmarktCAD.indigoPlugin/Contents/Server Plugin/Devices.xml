@@ -17,8 +17,6 @@
                 <Label>Agile Tariff Device-</Label>
                 <List class="self" filter="" method="getAgileDevices" dynamicReload="true"/>
             </Field>
-
-
         </ConfigUI>
 		<States>
 		<State id="elec_instantaneous">
@@ -89,6 +87,140 @@
         </States>
         <UiDisplayStateId>elec_instantaneous</UiDisplayStateId>		
 	</Device>
+		<Device type="custom" id="GlowmarktCAD_local">
+		<Name>Glowmarkt Smart Meter MQTT Local</Name>
+		<ConfigUI>
+            <SupportURL>http-//forums.indigodomo.com/viewforum.php?f=xxx</SupportURL>
+
+            <Field id="brokerID" type="menu">
+                <Label>MQTT Broker-</Label>
+                <List class="self" filter="" method="getBrokerDevices" dynamicReload="true"/>
+            </Field>
+            <Field id="octopus_enable" type="checkbox" defaultValue="false" >
+            <Label>Use associated Octopus Agile Tariff Device</Label>
+            </Field>
+			<Field id="octopusID" type="menu" visibleBindingId="octopus_enable" visibleBindingValue="true">
+                <Label>Agile Tariff Device-</Label>
+                <List class="self" filter="" method="getAgileDevices" dynamicReload="true"/>
+            </Field>
+
+
+        </ConfigUI>
+		<States>
+		<State id="elec_instantaneous">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Current Electricity Usage</TriggerLabel>
+			<ControlPageLabel>Current Electricity Usage</ControlPageLabel>
+            </State>
+            <State id="elec_week_consumption">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Weekly Electricity Consumption</TriggerLabel>
+			<ControlPageLabel>Weekly Electricity Consumption</ControlPageLabel>
+            </State>
+            <State id="elec_month_consumption">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Monthly Electricity Consumption</TriggerLabel>
+			<ControlPageLabel>Monthly Electricity Consumption</ControlPageLabel>
+            </State>
+            <State id="elec_daily_consumption">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Daily Electricity Consumption</TriggerLabel>
+			<ControlPageLabel>Daily Electricity Consumption</ControlPageLabel>
+            </State>
+			<State id="electricity_meter_export">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Electricity Export Meter Reading</TriggerLabel>
+			<ControlPageLabel>Electricity Export Meter Reading</ControlPageLabel>
+            </State>
+            <State id="gas_week_consumption">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Weekly Gas Consumption</TriggerLabel>
+			<ControlPageLabel>Weekly Gas Consumption</ControlPageLabel>
+            </State>
+            <State id="gas_month_consumption">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Monthly Gas Consumption</TriggerLabel>
+			<ControlPageLabel>Monthly Gas Consumption</ControlPageLabel>
+            </State>
+            <State id="gas_daily_consumption">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Daily Gas Consumption</TriggerLabel>
+			<ControlPageLabel>Daily Gas Consumption</ControlPageLabel>
+            </State>
+            <State id="gas_meter">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Gas Meter Reading</TriggerLabel>
+			<ControlPageLabel>Gas Meter Reading</ControlPageLabel>
+            </State>
+            <State id="electricity_meter">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Electricity Meter Reading</TriggerLabel>
+			<ControlPageLabel>Electricity Meter Reading</ControlPageLabel>
+            </State>
+			<State id="mprn">
+			<ValueType>String</ValueType>
+			<TriggerLabel>Meter Point Reference Number (Gas)</TriggerLabel>
+			<ControlPageLabel>Meter Point Reference Number (Gas)</ControlPageLabel>
+            </State>
+            <State id="mpan">
+			<ValueType>String</ValueType>
+			<TriggerLabel>Meter Point Administration Number (Electricity)</TriggerLabel>
+			<ControlPageLabel>Meter Point Administration Number (Electricity)</ControlPageLabel>
+            </State>
+            <State id="electricity_supplier">
+			<ValueType>String</ValueType>
+			<TriggerLabel>Electricity Supplier</TriggerLabel>
+			<ControlPageLabel>Electricity Supplier</ControlPageLabel>
+            </State>
+			<State id="elec_unit_rate">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Electricity Unit Rate</TriggerLabel>
+			<ControlPageLabel>Electricity Unit Rate</ControlPageLabel>
+            </State>
+			<State id="elec_standing_charge">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Electricity Standing Charge</TriggerLabel>
+			<ControlPageLabel>Electricity Standing Charge</ControlPageLabel>
+            </State>
+			<State id="gas_unit_rate">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Gas Unit Rate</TriggerLabel>
+			<ControlPageLabel>Gas Unit Rate</ControlPageLabel>
+            </State>
+			<State id="gas_standing_charge">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Gas Standing Charge</TriggerLabel>
+			<ControlPageLabel>Gas Standing Charge</ControlPageLabel>
+            </State>
+			<State id="gas_cumulative_vol">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Gas Cumulative Volume</TriggerLabel>
+			<ControlPageLabel>Gas Cumulative Volume</ControlPageLabel>
+            </State>
+			<State id="gas_dayvol">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Gas Daily Volume</TriggerLabel>
+			<ControlPageLabel>Gas Daily Volume</ControlPageLabel>
+            </State>
+			<State id="gas_weekvol">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Gas Weekly Volume</TriggerLabel>
+			<ControlPageLabel>Gas Weekly Volume</ControlPageLabel>
+            </State>
+			<State id="gas_monthvol">
+			<ValueType>Number</ValueType>
+			<TriggerLabel>Gas Monthlyly Volume</TriggerLabel>
+			<ControlPageLabel>Gas Monthly Volume</ControlPageLabel>
+            </State>
+			<State id="gas_supplier">
+			<ValueType>String</ValueType>
+			<TriggerLabel>Gas Supplier</TriggerLabel>
+			<ControlPageLabel>Gas Supplier</ControlPageLabel>
+            </State>
+        </States>
+        <UiDisplayStateId>elec_instantaneous</UiDisplayStateId>
+	</Device>
+
 	<Device type="custom" id="daily_Consumption">
 			<Name>Glowmarkt Daily Consumption </Name>
 		<ConfigUI>
