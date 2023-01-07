@@ -261,7 +261,7 @@ class Plugin(indigo.PluginBase):
             else:
                 newProps['address'] = "-"
             device.replacePluginPropsOnServer(newProps)
-        if device.deviceTypeId == "GlowmarktCAD":
+        if device.deviceTypeId == "GlowmarktCAD" or device.deviceTypeId == "GlowmarktCAD_local":
             newProps = device.pluginProps
             newProps['address'] = device.states['mpan']
             device.replacePluginPropsOnServer(newProps)
