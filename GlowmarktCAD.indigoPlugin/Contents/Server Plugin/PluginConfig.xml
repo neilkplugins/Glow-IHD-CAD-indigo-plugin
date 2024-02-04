@@ -1,31 +1,24 @@
 <?xml version="1.0"?>
 <PluginConfig>
 
-<Field id="MQTT_enable" type="checkbox" defaultValue="false" >
-		<Label>Use MQTT to get "Real Time" Smart Meter Data (via Cloud MQTT)</Label>
+	<Field id="MQTT_enable" type="checkbox" defaultValue="false" >
+		<Label>Use MQTT to get "Real Time" Smart Meter Data</Label>
 	</Field>
-	<Field id="Label1" type="label" fontSize="small" fontColor="darkgray"><Label>This needs to be configured with Hildebrand Support and then you configure the MQTT Connector plugin first as detailed in the Wiki, and you will need either an IHD/CAD or Glowstick</Label>
+	<Field id="Label1" type="label" fontSize="small" fontColor="darkgray"><Label>This needs to be enabled by Glow/Hildebrand Support, and you need to configure the MQTT Connector plugin first as detailed in the Wiki, and you will need either an IHD/CAD or Glowstick</Label>
 	</Field>
 	<Field id="simpleseparator1" type="separator">
-	</Field>
-	<Field id="MQTT_enable_local" type="checkbox" defaultValue="false" >
-		<Label>Use MQTT to get "Real Time" Smart Meter Data (via Local MQTT)</Label>
-	</Field>
-	<Field id="Label2" type="label" fontSize="small" fontColor="darkgray"><Label>This needs to be configured on the CAD and then you configure the MQTT Connector plugin first as detailed in the Wiki, and you will need either an IHD/CAD or Glowstick</Label>
-	</Field>
-	<Field id="simpleseparator2" type="separator">
 	</Field>
 	<Field id="Pound_enable" type="checkbox" defaultValue="false" >
 		<Label>Present Daily Usage Data in £ vs pence</Label>
 	</Field>
-	<Field id="Label3" type="label" fontSize="small" fontColor="darkgray"><Label>If checked the device state will be shown in £, unchecked in pence to 2 decimal places for daily consumption devices</Label>
+	<Field id="Label2" type="label" fontSize="small" fontColor="darkgray"><Label>If checked the device state will be shown in £, unchecked in pence to 2 decimal places for daily consumption devices</Label>
 	</Field>
-	<Field id="simpleseparator3" type="separator">
+	<Field id="simpleseparator2" type="separator">
 	</Field>
 	<Field id="API_enable" type="checkbox" defaultValue="false" >
 		<Label>Use Glow API to get Smart Meter Data (for the last updated 30 minutes available without CAD)</Label>
 	</Field>
-	<Field id="Label4" type="label" fontSize="small" fontColor="darkgray"><Label>You will need an account from www.glowmarkt.com and confirm data is available in the Bright App first before configuring</Label>
+	<Field id="Label3" type="label" fontSize="small" fontColor="darkgray"><Label>You will need an account from www.glowmarkt.com and confirm data is available in the Bright App first before configuring</Label>
 	</Field>
 	<Field id="bright_account" type="textfield" visibleBindingId="API_enable" visibleBindingValue="true">
 		<Label>Glow/Bright Account eMail Address</Label>
@@ -33,18 +26,18 @@
 	<Field id="bright_password" type="textfield" visibleBindingId="API_enable" visibleBindingValue="true" secure="true">
 		<Label>Glow/Bright Account Password</Label>
 	</Field>
-	<Field id="Label5" type="label" fontSize="small" fontColor="darkgray"><Label>Note: You will also need to provide credentials to the MQTT Connector if you want real time updates via MQTT, and these need to be updated in both plugins if your details change</Label>
+	<Field id="Label4" type="label" fontSize="small" fontColor="darkgray"><Label>Note: You will also need to provide credentials to the MQTT Connector if you want real time updates via MQTT, and these need to be updated in both plugins if your details change</Label>
 	</Field>
 	<Field id="refresh_frequency" type="textfield" defaultValue="10">
 	<Label>Enter Polling Frequency in Minutes:</Label>
 	</Field>
-	<Field id="Label6" type="label" fontSize="small" fontColor="darkgray"><Label>This is the time between updating devices using the API (not MQTT)</Label>
+	<Field id="Label5" type="label" fontSize="small" fontColor="darkgray"><Label>This is the time between updating devices using the API (not MQTT)</Label>
+	</Field>
+	<Field id="simpleseparator3" type="separator">
+	</Field>
+	<Field id="Label6" type="label" fontSize="small" fontColor="darkgray"><Label>If you are having problems with the plugin (or you are instructed by support), you can enable extra logging in the Event Log window by checking this button. Use with caution.</Label>
 	</Field>
 	<Field id="simpleseparator4" type="separator">
-	</Field>
-	<Field id="Label7" type="label" fontSize="small" fontColor="darkgray"><Label>If you are having problems with the plugin (or you are instructed by support), you can enable extra logging in the Event Log window by checking this button. Use with caution.</Label>
-	</Field>
-	<Field id="simpleseparator5" type="separator">
 	</Field>
 	<Field id="showDebugInfo" type="checkbox">
 		<Label>Enable debugging:</Label>
